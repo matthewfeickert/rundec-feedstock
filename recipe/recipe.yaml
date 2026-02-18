@@ -1,21 +1,18 @@
 context:
-  name: "rundec"
-  version: "0.6"
+  version: "0.7"
 
 package:
-  name: ${{ name|lower }}
+  name: "rundec"
   version: ${{ version }}
 
 source:
   git: https://github.com/DavidMStraub/rundec-python.git
-  # tag: ${{ version }}
-  # Use exact commit as no tags for v0.5.1 or later (yet)
-  rev: "1b3006f03098ef4c6d44200ef643fede9c426cfe"
+  tag: v${{ version }}
   patches:
     - add-pyproject-toml-for-build-system.patch
 
 build:
-  number: 2
+  number: 0
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
